@@ -13,18 +13,18 @@ public class Sample {
 	
 	public static void make( String path ) {
 		
-		repeatTheSameLogic( TOTAL_LENGTH/SECTION_LENGTH , path );
+		addMoreDigits( TOTAL_LENGTH/SECTION_LENGTH , path );
 		
 	}
 	
-	private static void repeatTheSameLogic( int repeatTimes , String path ) {
+	private static void addMoreDigits( int repeatTimes , String path ) {
 		
 		for ( int i = 0 ; i < repeatTimes ; i++ )
-			makeSubFile( path );
+			preparePartOfTheFile( path );
 		
 	}
 	
-	private static void makeSubFile( String path ) {
+	private static void preparePartOfTheFile( String path ) {
 		
 		String sample = prepareDigits();
 		writeDigitsIntoFile( sample , path );
@@ -33,7 +33,8 @@ public class Sample {
 	
 	private static String prepareDigits() {
 		
-		return BigInteger.probablePrime( SECTION_LENGTH, new Random() ).toString();
+		// Why section? Because any longer one will not be done quickly.
+		return BigInteger.probablePrime( SECTION_LENGTH , new Random() ).toString();
 		
 	}
 	
